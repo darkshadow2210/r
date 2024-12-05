@@ -1,0 +1,123 @@
+#WEEK-6
+#DEMONSTRATE R PACKAGE
+library(base)
+sqrt(16)
+OUTPUT-
+[1] 4
+--------------------------
+#WEEK-7
+#1.CALCULATE MEAN 
+library(base)
+r=c(12,14,13,16,15)
+m=mean(r)
+print(m)
+OUTPUT-
+[1] 14
+
+#2.CALCULATE MEDIAN
+library(base)
+r=c(40,30,35,45,20,15,10)
+m=median(r)
+print(m)
+OUTPUT-
+[1] 30
+--------------------------------------
+#WEEK-8
+#1.FACTOR LEVELS
+grades=c("excellent","good","excellent","good","average")
+factor(grades)
+
+OUTPUT-
+[1] excellent good      excellent good      average  
+Levels: average excellent good
+
+#2.SUMMARIZING FACTOR 
+grades=c("excellent","good","excellent","good","average")
+f=factor(grades)
+print(f)
+class(f)
+summary(f)
+
+OUTPUT-
+[1] excellent good      excellent good      average  
+Levels: average excellent good
+[1] "factor"
+  average excellent      good 
+        1         2         2 
+
+#3.ORDERED FACTOR 
+grades=c("excellent","good","excellent","good","average")
+ordered_fact=factor(grades,ordered=TRUE,levels=c("average","good","excellent"))
+ordered_fact
+ordered_fact[1]<ordered_fact[2]
+
+OUTPUT-
+[1] excellent good      excellent good      average  
+Levels: average < good < excellent
+[1] FALSE
+-----------------------------------
+#WEEK-9
+#1.SUBSETTING OF DATA FRAMES
+df=data.frame(id=c(101,102,103,104,105),name=c('ravi','bhanu','mona','varun','mohan'),row.names=c('s1','s2','s3','s4','s5'))
+print(df)
+print("Display only s4")
+print(df["s4", ])
+
+OUTPUT-
+    id  name
+s1 101  ravi
+s2 102 bhanu
+s3 103  mona
+s4 104 varun
+s5 105 mohan
+[1] "Display only s4"
+    id  name
+s4 104 varun
+
+
+#2.EXTENDING DATA FRAMES
+df1=data.frame(id=c(101,102,103,104,105),name=c('ravi','bhanu','mona','varun','mohan'),row.names=c('s1','s2','s3','s4','s5'))
+df2=data.frame(id=c(106,107),name=c('peter','alex'),row.names=c('s6','s7'))
+print("data frame 1")
+print(df1)
+print("data frame 2")
+print(df2)
+df3=rbind(df1,df2)
+print("extended data frame ")
+print(df3)
+OUTPUT-
+    id  name
+s1 101  ravi
+s2 102 bhanu
+s3 103  mona
+s4 104 varun
+s5 105 mohan
+s6 106 peter
+s7 107 alex
+
+#3.Sorting Data Frames
+df1 <- data.frame(id=c(101,102,103),
+name=c('ravi','bhanu','mona'),
+percentage=c(65,82,66),
+row.names=c('s1','s2','s3'))
+print(df1)
+print('Sort in Decending Order')
+df1[order(df1$percentage,decreasing=TRUE), ]
+print('Sort in Ascending Order')
+df1[order(df1$percentage,decreasing=FALSE), ] 
+
+OUTPUT-
+    id  name percentage
+s1 101  ravi         65
+s2 102 bhanu         82
+s3 103  mona         66
+[1] "Sort in Decending Order"
+    id  name percentage
+s2 102 bhanu         82
+s3 103  mona         66
+s1 101  ravi         65
+[1] "Sort in Ascending Order"
+    id  name percentage
+s1 101  ravi         65
+s3 103  mona         66
+s2 102 bhanu         82
